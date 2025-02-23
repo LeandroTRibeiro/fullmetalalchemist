@@ -10,7 +10,7 @@
 
 body {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
 }
 
@@ -35,13 +35,22 @@ body {
 
 /* ENTRADA */
 
-.degrade1 {
+.degrade1, .degrade2, .degrade3 {
     position: absolute;
-    width: 150vw;
-    height: 150vh;
-    background: radial-gradient(at 10% 90%, rgba(255, 0, 0, 0.349) 5%, transparent 51%);
+    width: 100vw; 
+    height: 100vh;
     z-index: 1;
+}
+
+.degrade1 {
+    background: radial-gradient(at 10% 90%, rgba(255, 0, 0, 0.349) 5%, transparent 51%);
     animation: degrade1 20s infinite alternate ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .degrade1 {
+        animation: none;
+    }
 }
 
 @keyframes degrade1 {
@@ -49,7 +58,7 @@ body {
         transform: translate(0, 0); 
     }
     50% { 
-        transform: translate(-20%, 20%); 
+        transform: translate(-10%, 10%); 
     }
     100% { 
         transform: translate(0, 0); 
@@ -57,32 +66,36 @@ body {
 }
 
 .degrade2 {
-    position: absolute;
-    width: 150vw;
-    height: 150vh;
     background: radial-gradient(at 80% 80%, rgba(255, 38, 0, 0.445) 5%, transparent 51%);
-    z-index: 1;
     animation: degrade2 18s infinite alternate ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .degrade2 {
+        animation: none;
+    }
 }
 
 @keyframes degrade2 {
     0% { transform: translate(0, 0); }
-    50% { transform: translate(30%, -30%); }
+    50% { transform: translate(10%, -10%); }
     100% { transform: translate(0, 0); }
 }
 
 .degrade3 {
-    position: absolute;
-    width: 150vw;
-    height: 150vh;
     background: radial-gradient(at 5% 5%, rgba(255, 0, 0, 0.336) 5%, transparent 51%);
-    z-index: 1;
     animation: degrade3 18s infinite alternate ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .degrade3 {
+        animation: none;
+    }
 }
 
 @keyframes degrade3 {
     0% { transform: translate(0, 0); }
-    50% { transform: translate(-40%, -20%); }
+    50% { transform: translate(-10%, -10%); }
     100% { transform: translate(0, 0); }
 }
 
@@ -114,6 +127,7 @@ body {
         background-size: 200%;
     }
 }
+
 .degrade5 {
     opacity: 0;
     position: absolute;
@@ -151,6 +165,13 @@ body {
     animation: slide-top .8s ease-in-out;
 }
 
+@media (max-width: 768px) {
+    .ed {
+        background: url('/assets/images/ed.png') center/cover no-repeat;
+    }
+}
+
+
 @keyframes slide-top {
     0% {
         transform: scale(0.5) translateY(200%);
@@ -163,7 +184,6 @@ body {
     }
 }
 
-
 .al {
     position: absolute;
     width: 100vw;
@@ -174,8 +194,13 @@ body {
     z-index: 2;
 }
 
+@media (max-width: 768px) {
+    .al {
+        background: url('/assets//images/all.png') right/cover no-repeat;
+    }
+}
+
 @keyframes slide-left {
-    
     0% {
         opacity: 0;
         transform: scale(0.5) translateX(200%);
@@ -183,18 +208,16 @@ body {
     95% {
         transform: scale(1.1) translateX(-5%);
     }
-    
     100% {
         opacity: 1;
         transform: scale(1) translateX(0);
     }
 }
-
 /* SITE */
 
 header {
     position: fixed;
-    width: 100%;
+    width: 100vw;
     height: 80px;
     padding-inline: 20px;
     display: flex;
@@ -205,6 +228,14 @@ header {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.281);
     z-index: 999;
     animation: fade-in-site 4s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    header {
+        height: fit-content;
+        flex-direction: column;
+        padding: 20px;
+    }
 }
 
 header > img {
@@ -242,9 +273,8 @@ main {
     display: flex;
     flex-direction: column;
     background: rgb(37, 37, 37);
+    overflow: hidden;
 }
-
-
 
 .container {
     position: absolute;
@@ -325,6 +355,7 @@ main {
 .card.selecionado {
     border-inline: 2px solid #ff0000; 
     box-shadow: 0 0 15px #ff0000;
+    border-radius: 0;
     height: calc(100vh - 70px);
 }
 
@@ -355,6 +386,14 @@ main {
     transition: all .5s ease-in-out;
     z-index: 5;
 }
+
+@media (max-width: 768px) {
+    .resumo {
+        max-width: 90vw;
+    }
+}
+
+
 
 .resumo > p > a {
     color: lightskyblue;
